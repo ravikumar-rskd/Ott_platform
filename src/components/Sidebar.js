@@ -7,12 +7,18 @@ import { ArrowDropDown } from "@mui/icons-material";
 import { useDispatch } from 'react-redux';
 import { setGenre, getMovies } from './movieSlice';
 import MovieIcon from '@mui/icons-material/Movie';
+import {useNavigate} from 'react-router-dom';
+
 
 
 const GenreSideBar = () => {
+  const navigate =useNavigate();
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const homeClick=()=>{
+    navigate('/');
+  }
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -22,6 +28,7 @@ const GenreSideBar = () => {
 
   const handleGenreClick = (genreId) => {
     console.log("Genre clicked:", genreId); // Debugging message
+    navigate('/');
     dispatch(setGenre(genreId));
     dispatch(getMovies(genreId));
     handleClose();
@@ -62,6 +69,7 @@ const GenreSideBar = () => {
             background:'white'
           },
         }}
+        onClick={homeClick}
         >
           <ListItemIcon>
             <HomeIcon sx={{ blockSize:30, color: "black" }} />
@@ -96,7 +104,7 @@ const GenreSideBar = () => {
         >
           {genres.map((genre)=>(
 
-            <MenuItem key={genre.id} onClick={() => handleGenreClick(genre.id)}>
+            <MenuItem key={genre.id} onClick={() => handleGenreClick(genre.id) }>
               <ListItemIcon>
               <MovieIcon sx={{ color: 'black' }} />
               </ListItemIcon>

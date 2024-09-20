@@ -124,3 +124,17 @@ h3 {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.card-movie{
+  width: 10%;
+  height: 10%;
+  margin-bottom: 200;
+  justify-content: center;
+  justify-items: center;
+
+}
+.main-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}

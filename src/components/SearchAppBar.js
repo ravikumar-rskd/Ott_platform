@@ -56,14 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-export default function SearchAppBar() {
-  const [sideBarOpen,setsideBarOpen]=useState(false);
-  
-  const sideBar=()=>{
-    return(
-      setsideBarOpen(!sideBarOpen)
-    )
-  }
+export default function SearchAppBar({sideBarOpen,sideBar}) {
   return (
     <Box  height={50} sx={{ flexGrow: 1 }} >
       <AppBar color='warning' position="fixed">
@@ -86,7 +79,7 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            smaRt
+            sma<span style={{color:'red',fontSize:50,fontFamily:'serif'}}>R</span>t
           </Typography>
           
           <Search>

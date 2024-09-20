@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from './movieSlice';
 import { Grid, Card, CardMedia, CardContent, Typography, Rating } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';  
 
 const MovieListGenres = () => {
   const dispatch = useDispatch();
@@ -21,18 +21,24 @@ const MovieListGenres = () => {
   if (status === 'failed') return <div>Error loading data</div>;
 
   return (
-    <Grid container spacing={1} marginLeft={20} width={1120} padding={2}>
+    <Grid container spacing={2} marginLeft={21} width={1120} padding={2}>
       {movies.map((movie) => (
         <Grid item  xs={6} sm={4} md={3}  key={movie.id} >
           <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none' }}>
-            <Card className='movie-list'>
+            <Card  sx={{
+            
+              '&:hover':{
+                boxShadow:'10px 10px 20px',
+                transform:'scale(1.05)',
+              },
+            }}>
               <CardMedia
                 component="img"
                 image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
               />
               <CardContent>
-                <Typography variant="h6">{movie.title}</Typography>
+                <Typography fontWeight={3} fontSize={15} variant="h6">{movie.title}</Typography>
                 <Rating value={movie.vote_average / 2} precision={0.5} readOnly />
               </CardContent>
             </Card>
